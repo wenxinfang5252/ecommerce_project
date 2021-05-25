@@ -151,4 +151,61 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id = "checkUsername" resultType = "int" parameterType = "String">
+    select count(1) from mmall_user
+    where username = #{username}
+  </select>
+
+  <select id = "checkEmail" resultType = "int" parameterType = "String">
+    select count(1) from mmall_user
+    where email = #{email}
+  </select>
+
+
+  <select id = "selectLogin" resultMap="BaseResultMap">
+    select
+     <include refid = "Base_Column_List" />
+       from mmall_user
+       where username = #{username}
+       and password = #{password}
+  </select>
+
+  <select id="selectQuestionByUsername" resultType = "String">
+    select
+     question
+     from mmall_user
+     where username = #{username}
+  </select>
+
+  <!--todo 网上说多个参数时，parameterType可以不写，测试的时候试试-->
+  <select id="checkAnswer" resultType = "Int" parameterType="map">
+    select
+    count(1)
+    from mmall_user
+    where username = #{username}
+    and question = #{question}
+    and answer = #{answer}
+  </select>
+
+  <!--别忘了update_time-->
+  <update id="updatePasswordByUsername">
+    update mmall_user
+    set password = #{passwordNew}, update_time = now()
+    where username = #{username}
+  </update>
+
+  <select id="checkPassword" resultType = "Int">
+    select
+    count(1)
+    from mmall_user
+    where password = #{password} and id = #{userId}
+  </select>
+
+  <select id="checkEmailByUserId" resultType = "Int">
+    select
+    count(1)
+    from mmal_user
+    where email = #{email} and id != #{userId}
+  </select>
 </mapper>

@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="mmall" options="-extdirs &quot;$PROJECT_DIR$/src/main/webapp/WEB-INF/lib&quot;" />
+      <module name="mmall" options="-extdirs $PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
     </option>
   </component>
 </project>
